@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "c803d57e-cb7a-4138-b2e5-03e4f98a3c45",
+		"name": "imageprocess",
+		"description": "sample calls with sample images to localhost:3000  service provided,\n\nyou can either ramp up service locally or via docker locally, in both cases port available will be 3000\n\nin docker use -p 3000:3000",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "simple Hello World, use as ping, default by nestjs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "normal rects",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/interviews/Enurgen/enurgen-rect-extraction-code-challenge/simple.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/extract-rect-coords",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"extract-rect-coords"
+					],
+					"query": [
+						{
+							"key": "file",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "inclined rects",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/interviews/Enurgen/enurgen-rect-extraction-code-challenge/rotated.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/extract-rect-coords",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"extract-rect-coords"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

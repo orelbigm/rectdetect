@@ -72,3 +72,43 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+## Dockerfile and container production
+
+There is a DockerFile to build an image of this service. Notice service 
+runs on port 3000, there is no EXPOSE in Dockerfile, make sure when
+you start container to include port mapping in my case I used
+
+-p 3000:3000
+
+just run to build image
+
+docker build --tag 'image_name' .
+
+and start image via:
+
+docker run --detach 'image_name'
+
+
+In my case in my Mac I had buildx
+
+What is the purpose of docker Buildx?
+Buildx is a Docker CLI plugin that extends the docker build command with the full support of the features provided by Moby BuildKit builder toolkit. It provides the same user experience as docker build with many new features like creating scoped builder instances and building against multiple nodes concurrently.
+
+
+sample with buildx 
+
+
+docker buildx build -t unoenur --annotation "version=uno" --push .
+
+
+docker run -p 3000:3000 --detach unoenur 
+
+
+## postman collection
+
+find under postman_collection folder a postman collection to interact with service
+
+make sure for two POST calls to select to upload files under Body/form-data
+for key 'file'  you will be able to remove current file and via a button browse for your files
